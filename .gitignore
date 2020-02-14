@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Compiled Output
+.next/
+dist/
+
+# Editors
+.vscode/
+
+# Misc
+.DS_STORE
+
+yarn-debug.log*
+yarn-error.log*
+npm-debug.log*

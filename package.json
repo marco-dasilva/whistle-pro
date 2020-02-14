@@ -1,0 +1,17 @@
+{
+  "name": "whistle-pro",
+  "version": "1.0.0",
+  "description": "",
+  "author": "mqr",
+  "license": "MIT",
+  "scripts": {
+    "dev:app": "yarn --cwd ./packages/app/ dev",
+    "dev:api": "yarn --cwd ./packages/api/ dev"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {}
+}
