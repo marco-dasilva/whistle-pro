@@ -14,7 +14,7 @@ import { join } from 'path';
     TypeOrmModule.forRoot({
       type: 'mongodb',
       host: 'localhost',
-      database: 'osc',
+      database: 'whistle',
       entities: [join(__dirname, '**/**.entity{.ts,.js}')],
       useNewUrlParser: true,
       logging: true,
