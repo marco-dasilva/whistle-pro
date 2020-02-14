@@ -7,7 +7,9 @@ const GetSelectedKeys = (): string[] => {
   const currentRoute = useRouter().pathname;
 
   switch (currentRoute) {
-    case '/manage/teams':
+    case '/players':
+      return ['2'];
+    case '/teams':
       return ['3'];
     default:
       return ['1'];
@@ -26,7 +28,7 @@ const Menu = (): ReactElement => {
         </Link>
       </AMenu.Item>
       <AMenu.Item key="2">
-        <Link href="/manage/players">
+        <Link href="/players">
           <a>
             <Icon type="user" />
             <span className="nav-text">Players</span>
@@ -34,7 +36,7 @@ const Menu = (): ReactElement => {
         </Link>
       </AMenu.Item>
       <AMenu.Item key="3">
-        <Link href="/manage/teams">
+        <Link href="/teams">
           <a>
             <Icon type="team" />
             <span className="nav-text">Teams</span>

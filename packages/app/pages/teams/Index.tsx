@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GetTeams } from '../../queries/Teams';
-import { Table } from 'antd';
+import { Table, Button, Row, Col } from 'antd';
 
-const Teams = (): ReactElement => {
+const Team = (): ReactElement => {
   const { data } = useQuery(GetTeams);
   const columns = [];
 
@@ -21,11 +21,18 @@ const Teams = (): ReactElement => {
 
   return (
     <div>
-      Teams:
-
-      <Table dataSource={data && data.teams} columns={columns} pagination={false} />
+      <Row>
+        <Col>
+          <Button type="primary">Create Team</Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Table dataSource={data && data.teams} columns={columns} pagination={false} />
+        </Col>
+      </Row>
     </div>
   )
 }
 
-export default Teams;
+export default Team;
