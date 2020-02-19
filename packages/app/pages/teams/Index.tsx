@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react';
 import { useQuery } from '@apollo/react-hooks';
 import { GetTeams } from '../../queries/Teams';
 import { Table, Button, Row, Col } from 'antd';
+import Link from 'next/link';
 
 const Team = (): ReactElement => {
   const { data } = useQuery(GetTeams);
@@ -23,7 +24,9 @@ const Team = (): ReactElement => {
     <div>
       <Row>
         <Col>
-          <Button type="primary">Create Team</Button>
+          <Link href="/teams/create">
+            <Button type="primary">Create Team</Button>
+          </Link>
         </Col>
       </Row>
       <Row>
