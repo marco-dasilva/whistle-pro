@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "dev:app": "yarn --cwd ./packages/app/ dev",
-    "dev:api": "yarn --cwd ./packages/api/ dev"
+    "dev:api": "yarn --cwd ./packages/api/ dev",
+    "dev:bot": "yarn --cwd ./packages/bot/ dev"
   },
   "workspaces": [
     "packages/*"
