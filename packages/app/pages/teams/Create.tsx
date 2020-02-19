@@ -1,5 +1,4 @@
 import React, { ReactElement } from 'react';
-import { Form } from 'antd';
 
 const Create = (): ReactElement => {
 

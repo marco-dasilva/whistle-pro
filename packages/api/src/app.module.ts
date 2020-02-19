@@ -19,7 +19,7 @@ import { join } from 'path';
       useNewUrlParser: true,
       logging: true,
       useUnifiedTopology: true,
-      synchronize: true
+      synchronize: false // Recreates DB Schema's (Development Only)
     }),
     TeamModule
   ],
