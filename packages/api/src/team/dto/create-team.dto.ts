@@ -3,10 +3,6 @@ import { IsString, IsNotEmpty } from 'class-validator';
 
 @ObjectType()
 export class TeamType {
-  @Field(() => ID)
-  @IsString()
-  readonly id?: string;
-
   @Field()
   @IsString()
   @IsNotEmpty()

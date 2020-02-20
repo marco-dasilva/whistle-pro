@@ -10,6 +10,7 @@ dist/
 
 # Misc
 .DS_STORE
+.env
 
 yarn-debug.log*
 yarn-error.log*
