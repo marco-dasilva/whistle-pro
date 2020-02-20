@@ -14,65 +14,59 @@ interface T {
 export class RandomizeTeamsService {
   async randomize(req: T): Promise<any> {
     let teams = this.generateTeamArray(req.teams);
-    let players: P[] = (JSON.parse(JSON.stringify(req.players)));
+    const players: P[] = (JSON.parse(JSON.stringify(req.players)));
 
     while (players.length > 0) {
-      players = this.shufflePlayers(players);
-
-      const player = players.pop();
-
-      teams = this.addToTeam(teams, player, req.players.length);
+      const player = players.sort((a, b) => (a.skillRank > b.skillRank) ? 1 : -1).pop();
+      teams = this.addToTeam(teams, player);
     }
+
+    this.computeSkill(teams);
+
+    teams.forEach((team: P[], index: number): void => {
+      teams[index] = this.shufflePlayers(team);
+    })
 
     return { teams };
   }
 
-  addToTeam(teams: P[][], player: P, totalPlayerCount: number): Array<P[]> {
-    const addToTeamIndex = this.addToEmptyTeam(teams);
+  computeSkill(teams: Array<P[]>): void {
+    const skill = new Array<number>(teams.length);
 
-    if (addToTeamIndex !== -1) {
-      teams[addToTeamIndex].push(player);
-    } else {
-      let lowestTeamSum = 100;
-      let teamAddIndex = -1;
-
-      teams.forEach((team: P[], index: number): void => {
-        let teamSum = 0;
-
-        team.forEach((player: P): void => {
-          teamSum += player.skillRank;
-        });
-
-        if (teamSum < lowestTeamSum) {
-          lowestTeamSum = teamSum;
-          teamAddIndex = index;
-          return;
-        }
+    teams.forEach((team: P[], index: number): void => {
+      skill[index] = 0;
+      team.forEach((player: P): void => {
+        skill[index] += player.skillRank;
       });
+    });
 
-      if (teamAddIndex !== -1) {
-        if (teams[teamAddIndex].length > Math.floor(totalPlayerCount / teams.length)) {
-          // TODO
-        } else {
-          teams[teamAddIndex].push(player);
-        }
-      }
+    console.log(skill);
+  }
+
+  addToTeam(teams: Array<P[]>, player: P): Array<P[]> {
+    let randomIndex: number = Math.floor(Math.random() * 4);
+
+    while (this.lessThanTeams(teams, randomIndex)) {
+      randomIndex = Math.floor(Math.random() * 4);
     }
+
+    teams[randomIndex].push(player);
 
     return teams;
   }
 
-  addToEmptyTeam(teams: P[][]): number {
-    let addToTeamIndex = -1;
+  lessThanTeams(teams: Array<P[]>, randomIndex: number): boolean {
+    const teamLength: number = teams[randomIndex].length;
+    let isLess = false;
 
-    teams.forEach((team: P[], index: number): void => {
-      if (team.length < 1) {
-        addToTeamIndex = index;
+    teams.forEach((team: P[]): void => {
+      if (team.length < teamLength) {
+        isLess = true;
         return;
       }
-    });
+    })
 
-    return addToTeamIndex;
+    return isLess
   }
 
   generateTeamArray(teamCount: number): Array<P[]> {
