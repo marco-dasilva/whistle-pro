@@ -1,20 +1,17 @@
+import { PlayerEntity } from './../player/player.entity';
 import { Injectable } from "@nestjs/common";
 
-interface P {
-  id: number;
-  skillRank: number;
-}
 
 interface T {
   teams: number;
-  players: P[];
+  players: PlayerEntity[];
 }
 
 @Injectable()
 export class RandomizeTeamsService {
   async randomize(req: T): Promise<any> {
     let teams = this.generateTeamArray(req.teams);
-    const players: P[] = (JSON.parse(JSON.stringify(req.players)));
+    const players: PlayerEntity[] = (JSON.parse(JSON.stringify(req.players)));
 
     while (players.length > 0) {
       const player = players.sort((a, b) => (a.skillRank > b.skillRank) ? 1 : -1).pop();
@@ -23,19 +20,19 @@ export class RandomizeTeamsService {
 
     this.computeSkill(teams);
 
-    teams.forEach((team: P[], index: number): void => {
+    teams.forEach((team: PlayerEntity[], index: number): void => {
       teams[index] = this.shufflePlayers(team);
     })
 
     return { teams };
   }
 
-  computeSkill(teams: Array<P[]>): void {
+  computeSkill(teams: Array<PlayerEntity[]>): void {
     const skill = new Array<number>(teams.length);
 
-    teams.forEach((team: P[], index: number): void => {
+    teams.forEach((team: PlayerEntity[], index: number): void => {
       skill[index] = 0;
-      team.forEach((player: P): void => {
+      team.forEach((player: PlayerEntity): void => {
         skill[index] += player.skillRank;
       });
     });
@@ -43,7 +40,7 @@ export class RandomizeTeamsService {
     console.log(skill);
   }
 
-  addToTeam(teams: Array<P[]>, player: P): Array<P[]> {
+  addToTeam(teams: Array<PlayerEntity[]>, player: PlayerEntity): Array<PlayerEntity[]> {
     let randomIndex: number = Math.floor(Math.random() * 4);
 
     while (this.lessThanTeams(teams, randomIndex)) {
@@ -55,30 +52,30 @@ export class RandomizeTeamsService {
     return teams;
   }
 
-  lessThanTeams(teams: Array<P[]>, randomIndex: number): boolean {
+  lessThanTeams(teams: Array<PlayerEntity[]>, randomIndex: number): boolean {
     const teamLength: number = teams[randomIndex].length;
     let isLess = false;
 
-    teams.forEach((team: P[]): void => {
+    teams.forEach((team: PlayerEntity[]): void => {
       if (team.length < teamLength) {
         isLess = true;
         return;
       }
     })
 
-    return isLess
+    return isLess;
   }
 
-  generateTeamArray(teamCount: number): Array<P[]> {
-    const teams = new Array<P[]>(teamCount);
+  generateTeamArray(teamCount: number): Array<PlayerEntity[]> {
+    const teams = new Array<PlayerEntity[]>(teamCount);
 
     for (let index = 0; index < teams.length; index++) {
-      teams[index] = new Array<P>();
+      teams[index] = new Array<PlayerEntity>();
     }
     return teams;
   }
 
-  shufflePlayers(players: P[]): P[] {
+  shufflePlayers(players: PlayerEntity[]): PlayerEntity[] {
     // Knuth Shuffle
     let currentIndex = players.length;
     let temporaryValue;

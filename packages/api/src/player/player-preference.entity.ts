@@ -6,16 +6,16 @@ export class PlayerPreferenceEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToOne(type => PlayerEntity)
+  @OneToOne(() => PlayerEntity)
   @JoinColumn()
   player: PlayerEntity;
 
   @Column("simple-array")
-  playerPref: String[];
+  playerPref: string[];
 
   @Column("simple-array")
-  playerAvoidancePref: String[];
+  playerAvoidancePref: string[];
 
   @Column()
-  colorPref: String;
+  colorPref: string;
 }

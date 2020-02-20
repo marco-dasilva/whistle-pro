@@ -6,32 +6,32 @@ export class PlayerEntity {
   id: number;
 
   @Column()
-  firstName: String;
+  firstName: string;
 
   @Column()
-  lastName: String;
+  lastName: string;
 
   @Column()
-  email: String;
+  email: string;
 
   @Column()
-  phoneNumber: String;
+  phoneNumber: string;
 
   @Column()
-  nationality: String;
+  nationality: string;
 
   @Column({ default: false })
-  isMonthly: Boolean;
+  isMonthly: boolean;
 
   @Column()
-  skillRank: Number;
+  skillRank: number;
 
   @Column()
-  position: String;
+  position: string;
 
   @Column()
   dob: Date;
 
   @Column({ default: false })
-  isInjured: Boolean;
+  isInjured: boolean;
 }
