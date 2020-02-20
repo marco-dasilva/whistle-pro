@@ -16,6 +16,6 @@ input TeamInput {
 }
 
 type TeamType {
-  id: ID!
+  id: Float!
   name: String!
 }

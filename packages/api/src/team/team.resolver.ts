@@ -10,12 +10,12 @@ import { UseGuards } from '@nestjs/common';
 export class TeamResolver {
   constructor(private readonly teamService: TeamService) { }
 
-  @UseGuards(GqlAuthGuard)
   @Query(() => [TeamType])
   async teams(): Promise<TeamEntity[]> {
     return this.teamService.findAll();
   }
 
+  @UseGuards(GqlAuthGuard)
   @Mutation(() => TeamType)
   async createTeam(@Args('input') input: TeamInput): Promise<TeamEntity> {
     const created = await this.teamService.create({ ...input });
