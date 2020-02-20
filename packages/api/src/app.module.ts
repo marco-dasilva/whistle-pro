@@ -1,3 +1,4 @@
+import { RandomizeTeamsModule } from './randomize-teams/randomize-teams.module';
 import { AppController } from './app.controller';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
@@ -25,7 +26,8 @@ import { UsersModule } from './users/users.module';
     }),
     TeamModule,
     AuthModule,
-    UsersModule
+    UsersModule,
+    RandomizeTeamsModule
   ],
   controllers: [
     AppController
