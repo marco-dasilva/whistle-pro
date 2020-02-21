@@ -19,7 +19,7 @@ async function bootstrap() {
       path: '/',
       maxAge: 31536000000,
     },
-    secret: crypto.createHash('sha256').update((process.env.STORE_SECRET || 'secret')).digest('hex')
+    secret: crypto.createHash('sha256').update(process.env.COOKIE_SECRET).digest('hex')
   })
 
 

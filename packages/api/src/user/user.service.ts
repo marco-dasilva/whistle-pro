@@ -1,5 +1,9 @@
+import { PlayerEntity } from 'src/player/player.entity';
+import { UserEntity } from './user.entity';
 
 import { Injectable } from '@nestjs/common';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 
 export type User = any;
 
@@ -7,27 +11,22 @@ export type User = any;
 export class UserService {
   private readonly user: User[];
 
-  constructor() {
-    this.user = [
-      {
-        userId: 1,
-        username: 'john',
-        password: 'changeme',
-      },
-      {
-        userId: 2,
-        username: 'chris',
-        password: 'secret',
-      },
-      {
-        userId: 3,
-        username: 'maria',
-        password: 'guess',
-      },
-    ];
-  }
+  constructor(
+    @InjectRepository(UserEntity)
+    private readonly userRepository: Repository<UserEntity>,
+    @InjectRepository(PlayerEntity)
+    private readonly playerRepository: Repository<PlayerEntity>
+  ) { }
 
-  async findOne(username: string): Promise<User | undefined> {
-    return this.user.find(user => user.username === username);
+  async validateUser(email: string, password: string): Promise<any | null> {
+    let player = await this.playerRepository.createQueryBuilder('player').where('player.email=(:email)', { email }).execute();
+
+    if (player.length > 0) {
+      const validPassword = await this.userRepository.createQueryBuilder('user').where('user.password=(:password)', { password }).execute();
+      if (validPassword.length === 0) {
+        player = null;
+      }
+    }
+    return player;
   }
 }

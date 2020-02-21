@@ -1,3 +1,4 @@
+import { LeagueModule } from './league/league.module';
 import { PlayerModule } from './player/player.module';
 import { RandomizeTeamsModule } from './randomize-teams/randomize-teams.module';
 import { Module } from '@nestjs/common';
@@ -7,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TeamModule } from './team/team.module';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
+import { ConfigService } from './config/config.service';
 
 @Module({
   imports: [
@@ -16,14 +18,15 @@ import { UserModule } from './user/user.module';
     GraphQLModule.forRoot({
       context: ({ req }) => ({ req }),
       installSubscriptionHandlers: true,
-      autoSchemaFile: 'schema.gql'
+      autoSchemaFile: 'schema.gql',
+      debug: new ConfigService().get('NODE_ENV') !== 'production'
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'mvia.ca',
-      port: 33006,
+      host: new ConfigService().get('DB_URL'),
+      port: +new ConfigService().get('DB_PORT'),
       username: 'mqr',
-      password: process.env.SQL_PASSWORD,
+      password: new ConfigService().get('SQL_PASSWORD'),
       database: 'whistle_pro',
       autoLoadEntities: true,
       logging: true,
@@ -34,7 +37,8 @@ import { UserModule } from './user/user.module';
     AuthModule,
     UserModule,
     RandomizeTeamsModule,
-    PlayerModule
+    PlayerModule,
+    LeagueModule
   ],
   controllers: [],
   providers: [],
