@@ -10,10 +10,10 @@ export class PlayerPreferenceEntity {
   @JoinColumn()
   player: PlayerEntity;
 
-  @Column("simple-array")
+  @Column()
   playerPref: string[];
 
-  @Column("simple-array")
+  @Column()
   playerAvoidancePref: string[];
 
   @Column()

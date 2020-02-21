@@ -1,16 +1,17 @@
 import { RandomizeTeamsModule } from './randomize-teams/randomize-teams.module';
-import { AppController } from './app.controller';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TeamModule } from './team/team.module';
 import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/users.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true
+    }),
     GraphQLModule.forRoot({
       context: ({ req }) => ({ req }),
       installSubscriptionHandlers: true,
@@ -30,12 +31,10 @@ import { UsersModule } from './users/users.module';
     }),
     TeamModule,
     AuthModule,
-    UsersModule,
+    UserModule,
     RandomizeTeamsModule
   ],
-  controllers: [
-    AppController
-  ],
+  controllers: [],
   providers: [],
 })
 export class AppModule { }

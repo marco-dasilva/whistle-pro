@@ -34,4 +34,7 @@ export class PlayerEntity {
 
   @Column({ default: false })
   isInjured: boolean;
+
+  @Column({ default: false })
+  isActive: boolean;
 }
