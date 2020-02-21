@@ -1,3 +1,4 @@
+import { PlayerModule } from './player/player.module';
 import { RandomizeTeamsModule } from './randomize-teams/randomize-teams.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
@@ -32,7 +33,8 @@ import { UserModule } from './user/user.module';
     TeamModule,
     AuthModule,
     UserModule,
-    RandomizeTeamsModule
+    RandomizeTeamsModule,
+    PlayerModule
   ],
   controllers: [],
   providers: [],

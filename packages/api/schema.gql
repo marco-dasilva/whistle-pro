@@ -4,18 +4,18 @@
 # -----------------------------------------------
 
 type Mutation {
-  createTeam(input: TeamInput!): TeamType!
+  createTeam(input: TeamInput!): TeamEntity!
 }
 
 type Query {
-  teams: [TeamType!]!
+  teams: [TeamEntity!]!
 }
 
-input TeamInput {
+type TeamEntity {
+  id: Float!
   name: String!
 }
 
-type TeamType {
-  id: Float!
+input TeamInput {
   name: String!
 }

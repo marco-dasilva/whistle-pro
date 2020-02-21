@@ -1,9 +1,9 @@
 import { ObjectType, Field } from 'type-graphql';
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
 @ObjectType()
-export class TeamEntity {
+export class LeagueEntity {
   @PrimaryGeneratedColumn()
   @Field()
   id: number;
