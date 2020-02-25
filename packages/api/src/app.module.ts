@@ -1,3 +1,5 @@
+import { MatchModule } from './match/match.module';
+import { GamedayModule } from './gameday/gameday.module';
 import { LeagueModule } from './league/league.module';
 import { PlayerModule } from './player/player.module';
 import { RandomizeTeamsModule } from './randomize-teams/randomize-teams.module';
@@ -36,7 +38,9 @@ import { ConfigService } from './config/config.service';
     AuthModule,
     RandomizeTeamsModule,
     PlayerModule,
-    LeagueModule
+    LeagueModule,
+    GamedayModule,
+    MatchModule
   ],
   controllers: [],
   providers: [],
