@@ -5,6 +5,9 @@ export class PlayerEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ type: 'blob' })
+  picture: string;
+
   @Column({ unique: true })
   @Unique('Duplicate unique name', ['uniqueName'])
   uniqueName: string;
@@ -18,23 +21,20 @@ export class PlayerEntity {
   @Column()
   email: string;
 
+  @Column({ select: false })
+  password: string;
+
   @Column()
   phoneNumber: string;
+
+  @Column({ type: 'date' })
+  dateOfBirth: Date;
 
   @Column()
   nationality: string;
 
-  @Column({ default: false })
-  isMonthly: boolean;
-
   @Column()
   skillRank: number;
-
-  @Column()
-  position: string;
-
-  @Column()
-  dob: Date;
 
   @Column({ default: false })
   isInjured: boolean;

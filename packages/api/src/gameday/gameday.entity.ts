@@ -1,13 +1,13 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
-export class LeagueEntity {
+export class GamedayEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  name: string;
+  @Column({ type: 'datetime' })
+  date: Date
 
-  @Column({ type: 'enum', enum: ['pickup', 'organized'] })
+  @Column({ type: 'enum', enum: ['round-robin'] })
   type: string;
 }

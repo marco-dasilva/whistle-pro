@@ -7,7 +7,6 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TeamModule } from './team/team.module';
 import { AuthModule } from './auth/auth.module';
-import { UserModule } from './user/user.module';
 import { ConfigService } from './config/config.service';
 
 @Module({
@@ -35,7 +34,6 @@ import { ConfigService } from './config/config.service';
     }),
     TeamModule,
     AuthModule,
-    UserModule,
     RandomizeTeamsModule,
     PlayerModule,
     LeagueModule

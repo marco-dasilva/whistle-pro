@@ -3,11 +3,6 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-type LeagueEntity {
-  id: Float!
-  name: String!
-}
-
 type Mutation {
   createTeam(input: TeamInput!): TeamEntity!
 }

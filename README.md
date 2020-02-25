@@ -15,7 +15,7 @@ Run the React app
 yarn dev:app
 ```
 
-Run the React app
+Run the NestJS api
 ```
 yarn dev:api
 ```
