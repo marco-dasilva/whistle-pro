@@ -1,17 +1,20 @@
 import { TeamEntity } from './../team/team.entity';
 import { GamedayEntity } from './../gameday/gameday.entity';
-import { Entity, PrimaryGeneratedColumn, OneToOne, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, ManyToOne, Column } from "typeorm";
 
 @Entity()
 export class GamedayTeamEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToOne(() => GamedayEntity)
+  @ManyToOne(() => GamedayEntity)
   gameday: GamedayEntity;
 
-  @OneToOne(() => TeamEntity)
-  team: TeamEntity;
+  @ManyToOne(() => TeamEntity)
+  teamHome: TeamEntity;
+
+  @ManyToOne(() => TeamEntity)
+  teamAway: TeamEntity;
 
   @Column({ type: 'datetime' })
   dateTime: Date;
