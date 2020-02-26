@@ -1,3 +1,4 @@
+import { PlayerEntity } from 'src/player/player.entity';
 
 import { Controller, Get, Request, Post, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
@@ -9,7 +10,7 @@ export class AuthController {
 
   @UseGuards(AuthGuard('local'))
   @Post('auth/login')
-  async login() {
-    return this.authService.login();
+  async login(@Request() req) {
+    return this.authService.login(req.user);
   }
 }

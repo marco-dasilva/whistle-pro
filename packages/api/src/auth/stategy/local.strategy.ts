@@ -1,3 +1,4 @@
+import { PlayerEntity } from 'src/player/player.entity';
 
 import { Strategy } from 'passport-local';
 import { PassportStrategy } from '@nestjs/passport';
@@ -10,13 +11,13 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     super();
   }
 
-  async validate(username: string, password: string): Promise<any> {
-    const user = await this.authService.validateUser(username, password);
+  async validate(username: string, password: string): Promise<PlayerEntity> {
+    const player = await this.authService.validateUser(username, password);
 
-    if (!user) {
+    if (!player) {
       throw new UnauthorizedException();
     }
 
-    return user;
+    return player;
   }
 }

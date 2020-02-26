@@ -21,7 +21,7 @@ export class PlayerEntity {
   @Column()
   email: string;
 
-  @Column({ select: false })
+  @Column()
   password: string;
 
   @Column()

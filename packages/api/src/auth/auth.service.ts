@@ -1,9 +1,9 @@
-
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { PlayerEntity } from 'src/player/player.entity';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class AuthService {
@@ -13,15 +13,21 @@ export class AuthService {
     private readonly playerRepository: Repository<PlayerEntity>
   ) { }
 
-  async validateUser(email: string, password: string): Promise<any | null> {
-    const player = await this.playerRepository.createQueryBuilder('player').where('player.email=(:email)', { email })
-      .andWhere('player.password=(:password)', { password }).execute();
+  async validateUser(email: string, password: string): Promise<PlayerEntity | null> {
+    const player = await this.playerRepository.find({
+      where: {
+        email
+      }
+    });
 
-    return player.length > 0 ? player : null;
+    return (await bcrypt.compare(password, player[0].password)) ? player[0] : null;
   }
 
-  async login() {
-    const payload = {};
+  async login(player: PlayerEntity) {
+    delete player.password;
+    const payload = {
+      ...player
+    };
     return {
       token: this.jwtService.sign(payload),
     };
