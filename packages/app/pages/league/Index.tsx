@@ -3,7 +3,7 @@ import React, { ReactElement } from "react";
 const League = (): ReactElement => {
   return (
     <div>
-      Test
+      Index File
     </div>
   );
 }

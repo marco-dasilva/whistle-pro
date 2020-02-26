@@ -34,7 +34,7 @@ const Team = (): ReactElement => {
       </Row>
       <Row>
         <Col>
-          <Table dataSource={data && data.teams} columns={columns} pagination={false} />
+          <Table dataSource={data && data.teams} rowKey="id" columns={columns} pagination={false} />
         </Col>
       </Row>
     </div>

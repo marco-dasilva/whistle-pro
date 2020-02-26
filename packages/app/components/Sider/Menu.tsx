@@ -11,6 +11,10 @@ const GetSelectedKeys = (): string[] => {
       return ['2'];
     case '/teams':
       return ['3'];
+    case '/teams/create':
+      return ['3'];
+    case '/league':
+      return ['4'];
     default:
       return ['1'];
   }
@@ -40,6 +44,14 @@ const Menu = (): ReactElement => {
           <a>
             <Icon type="team" />
             <span className="nav-text">Teams</span>
+          </a>
+        </Link>
+      </AMenu.Item>
+      <AMenu.Item key="4">
+        <Link href="/league">
+          <a>
+            <Icon type="global" />
+            <span className="nav-text">League</span>
           </a>
         </Link>
       </AMenu.Item>
