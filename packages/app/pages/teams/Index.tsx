@@ -11,11 +11,14 @@ const Team = (): ReactElement => {
   if (data && data.teams) {
     data.teams.forEach(team => {
       Object.keys(team).forEach(key => {
-        columns.push({
-          title: key,
-          dataIndex: key,
-          key: key
-        })
+        const hasKey = columns.filter(col => col.key === key);
+        if (hasKey.length === 0) {
+          columns.push({
+            title: key,
+            dataIndex: key,
+            key: key
+          });
+        }
       });
     });
   }
