@@ -50,7 +50,7 @@ const Menu = (): ReactElement => {
       <AMenu.Item key="4">
         <Link href="/league">
           <a>
-            <Icon type="global" />
+            <Icon type="deployment-unit" />
             <span className="nav-text">League</span>
           </a>
         </Link>
