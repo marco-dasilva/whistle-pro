@@ -3,11 +3,33 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+"""
+The javascript `Date` as string. Type represents date and time as the ISO Date string.
+"""
+scalar DateTime
+
 type Mutation {
   createTeam(input: TeamInput!): TeamEntity!
 }
 
+type PlayerEntity {
+  id: ID!
+  picture: String!
+  uniqueName: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phoneNumber: String!
+  dateOfBirth: DateTime!
+  nationality: String!
+  skillRank: Float!
+  isInjured: Boolean!
+  isActive: Boolean!
+}
+
 type Query {
+  player(id: Float!): [PlayerEntity!]!
+  players: [PlayerEntity!]!
   teams: [TeamEntity!]!
 }
 

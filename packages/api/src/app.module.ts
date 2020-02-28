@@ -17,7 +17,7 @@ import { ConfigService } from './config/config.service';
       isGlobal: true
     }),
     GraphQLModule.forRoot({
-      context: ({ req }) => ({ req }),
+      context: ({ req, res }) => ({ req, res }),
       installSubscriptionHandlers: true,
       autoSchemaFile: 'schema.gql',
       debug: new ConfigService().get('NODE_ENV') !== 'production'
@@ -31,7 +31,7 @@ import { ConfigService } from './config/config.service';
       database: 'whistle_pro',
       autoLoadEntities: true,
       logging: true,
-      synchronize: true,
+      synchronize: false,
       retryAttempts: 0
     }),
     TeamModule,

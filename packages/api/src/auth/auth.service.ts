@@ -26,7 +26,7 @@ export class AuthService {
   async login(player: PlayerEntity) {
     delete player.password;
     const payload = {
-      ...player
+      id: player.id
     };
     return {
       token: this.jwtService.sign(payload),
