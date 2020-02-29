@@ -3,10 +3,19 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+type AuthEntity {
+  token: String!
+}
+
 """
 The javascript `Date` as string. Type represents date and time as the ISO Date string.
 """
 scalar DateTime
+
+input LoginInput {
+  email: String!
+  password: String!
+}
 
 type Mutation {
   createTeam(input: TeamInput!): TeamEntity!
@@ -31,6 +40,7 @@ type Query {
   player(id: Float!): [PlayerEntity!]!
   players: [PlayerEntity!]!
   teams: [TeamEntity!]!
+  login(login: LoginInput!): AuthEntity!
 }
 
 type TeamEntity {

@@ -15,6 +15,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate() {
+    // TODO: Some kind of validation
     return {};
   }
 }
