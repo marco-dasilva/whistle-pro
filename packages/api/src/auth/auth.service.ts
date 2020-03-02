@@ -22,14 +22,4 @@ export class AuthService {
 
     return (await bcrypt.compare(password, player[0].password)) ? player[0] : null;
   }
-
-  async login(player: PlayerEntity) {
-    delete player.password;
-    const payload = {
-      id: player.id
-    };
-    return {
-      token: this.jwtService.sign(payload),
-    };
-  }
 }

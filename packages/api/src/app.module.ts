@@ -20,7 +20,8 @@ import { ConfigService } from './config/config.service';
       context: ({ req, res }) => ({ req, res }),
       installSubscriptionHandlers: true,
       autoSchemaFile: 'schema.gql',
-      debug: new ConfigService().get('NODE_ENV') !== 'production'
+      debug: new ConfigService().get('NODE_ENV') !== 'production',
+      playground: new ConfigService().get('NODE_ENV') !== 'production'
     }),
     TypeOrmModule.forRoot({
       type: 'mysql',

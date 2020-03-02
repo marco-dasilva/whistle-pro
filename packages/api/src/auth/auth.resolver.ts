@@ -1,12 +1,11 @@
 import { PlayerEntity } from './../player/player.entity';
 import { LoginInput } from './dto/login.dto';
 import { JwtService } from '@nestjs/jwt';
-import { Resolver, Query, Args } from "@nestjs/graphql";
+import { Resolver, Args, Mutation } from "@nestjs/graphql";
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 import { AuthEntity } from './auth.entity';
-import { Res } from '@nestjs/common';
 
 
 @Resolver('Auth')
@@ -17,7 +16,7 @@ export class AuthResolver {
     private readonly playerRepository: Repository<PlayerEntity>
   ) { }
 
-  @Query(() => AuthEntity)
+  @Mutation(() => AuthEntity)
   async login(
     @Args('login') { email, password }: LoginInput
   ): Promise<AuthEntity> {
@@ -27,16 +26,21 @@ export class AuthResolver {
       }
     });
 
-    if (await bcrypt.compare(password, player[0].password)) {
-      const payload = {
-        id: player[0].id
-      };
+    if (player.length > 0) {
+      if (await bcrypt.compare(password, player[0].password)) {
+        const payload = {
+          id: player[0].id,
+          admin: player[0].isSiteAdmin
+        };
 
-      return {
-        token: this.jwtService.sign(payload),
-      } as AuthEntity;
+        return {
+          token: this.jwtService.sign(payload),
+        } as AuthEntity;
+      } else {
+        throw Error('Invalid Email or Password')
+      }
     } else {
-      throw Error('Invalid Email or Password')
+      throw Error('Invalid Email or Password');
     }
   }
 }

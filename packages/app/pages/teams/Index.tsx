@@ -1,11 +1,12 @@
 import React, { ReactElement } from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { GetTeams } from '../../queries/Teams';
+import { GET_TEAMS } from '../../queries/Teams';
 import { Table, Button, Row, Col } from 'antd';
 import Link from 'next/link';
+import { withAuthSync } from '../../util/auth';
 
 const Team = (): ReactElement => {
-  const { data } = useQuery(GetTeams);
+  const { data } = useQuery(GET_TEAMS);
   const columns = [];
 
   if (data && data.teams) {
@@ -41,4 +42,4 @@ const Team = (): ReactElement => {
   )
 }
 
-export default Team;
+export default withAuthSync(Team);

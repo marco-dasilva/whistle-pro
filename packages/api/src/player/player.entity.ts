@@ -55,4 +55,7 @@ export class PlayerEntity {
   @Column({ default: false })
   @Field()
   isActive: boolean;
+
+  @Column({ default: false })
+  isSiteAdmin: boolean;
 }
