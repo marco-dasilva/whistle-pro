@@ -10,7 +10,8 @@ import { LOGIN } from 'src/app/queries/Login';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  public form = {
+  error: string = '';
+  form = {
     email: null,
     password: null
   }
@@ -37,7 +38,12 @@ export class LoginComponent implements OnInit {
         password: this.form.password
       }
     }).subscribe((resp: any) => {
-      this.authService.login(resp.data.login);
+      if (resp.data.login) {
+        this.authService.login(resp.data.login);
+        this.router.navigate(['/']);
+      }
+    }, (error) => {
+      this.error = error;
     });
   }
 }
