@@ -7,10 +7,10 @@ We are using `yarn` to manage the workspaces.
 
 Install dependencies
 ```
-yarn
+yarn install
 ```
 
-Run the React app
+Run the Angular app
 ```
 yarn dev:app
 ```
