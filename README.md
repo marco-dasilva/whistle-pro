@@ -1,5 +1,5 @@
-# Whistle Pro
-Whistle Pro application is a league/team manager application.
+# tournaliga
+tournaliga application is a league/team manager application.
 
 ## Installation
 We are using `yarn` to manage the workspaces.
