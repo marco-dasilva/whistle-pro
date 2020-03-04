@@ -4,9 +4,27 @@ node_modules/
 # Compiled Output
 .next/
 dist/
+out-tsc/
+tmp/
+bazel-out/
 
 # Editors
 .vscode/
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
 
 # Misc
 .DS_STORE
@@ -15,3 +33,15 @@ dist/
 yarn-debug.log*
 yarn-error.log*
 npm-debug.log*
+
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
