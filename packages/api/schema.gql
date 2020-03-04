@@ -41,6 +41,7 @@ type Query {
   player(id: Float!): [PlayerEntity!]!
   players: [PlayerEntity!]!
   teams: [TeamEntity!]!
+  init: AuthEntity!
 }
 
 type TeamEntity {

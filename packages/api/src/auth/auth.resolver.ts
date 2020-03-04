@@ -1,11 +1,14 @@
 import { PlayerEntity } from './../player/player.entity';
 import { LoginInput } from './dto/login.dto';
 import { JwtService } from '@nestjs/jwt';
-import { Resolver, Args, Mutation } from "@nestjs/graphql";
+import { Resolver, Args, Mutation, Query } from "@nestjs/graphql";
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 import { AuthEntity } from './auth.entity';
+import { UseGuards } from '@nestjs/common';
+import { GqlAuthGuard } from './guard/gql.guard';
+import { PlayerDecorator } from 'src/player/player.decorator';
 
 
 @Resolver('Auth')
@@ -15,6 +18,14 @@ export class AuthResolver {
     @InjectRepository(PlayerEntity)
     private readonly playerRepository: Repository<PlayerEntity>
   ) { }
+
+  @Query(() => AuthEntity)
+  @UseGuards(GqlAuthGuard)
+  async init(@PlayerDecorator() player: any): Promise<AuthEntity> {
+    return {
+      token: player.headers.authorization.split(' ')[1]
+    } as AuthEntity;
+  }
 
   @Mutation(() => AuthEntity)
   async login(
