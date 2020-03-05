@@ -6,7 +6,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 import { AuthEntity } from './auth.entity';
-import { UseGuards } from '@nestjs/common';
+import { UseGuards, UnauthorizedException } from '@nestjs/common';
 import { GqlAuthGuard } from './guard/gql.guard';
 import { PlayerDecorator } from 'src/player/player.decorator';
 
@@ -48,10 +48,10 @@ export class AuthResolver {
           token: this.jwtService.sign(payload),
         } as AuthEntity;
       } else {
-        throw Error('Invalid Email or Password')
+        throw new UnauthorizedException();
       }
     } else {
-      throw Error('Invalid Email or Password');
+      throw new UnauthorizedException();
     }
   }
 }

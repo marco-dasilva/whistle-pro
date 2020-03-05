@@ -38,7 +38,7 @@ export class PlayerEntity {
 
   @Column({ type: 'date' })
   @Field()
-  dateOfBirth: Date;
+  dateOfBirth: string;
 
   @Column()
   @Field()

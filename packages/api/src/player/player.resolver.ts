@@ -11,8 +11,15 @@ export class PlayerResolver {
 
   @Query(() => [PlayerEntity])
   @UseGuards(GqlAuthGuard)
-  async player(@PlayerDecorator() player: PlayerEntity, @Args('id') id?: number): Promise<PlayerEntity[]> {
+  async playerById(@PlayerDecorator() player: any, @Args('id') id?: number): Promise<PlayerEntity[]> {
     return this.playerService.player(id);
+  }
+
+  @Query(() => [PlayerEntity])
+  @UseGuards(GqlAuthGuard)
+  async player(@PlayerDecorator() player: any): Promise<PlayerEntity[]> {
+    console.log(player.user);
+    return this.playerService.player(player.user.userId);
   }
 
   @Query(() => [PlayerEntity])

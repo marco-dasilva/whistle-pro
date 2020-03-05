@@ -1,4 +1,4 @@
-import { GET_TEAMS } from './../../queries/GetTeams';
+import { GET_TEAMS } from './../../queries/Teams';
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 

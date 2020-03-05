@@ -1,4 +1,4 @@
-import { AUTH_INIT } from './../queries/AuthInit';
+import { AUTH_INIT } from './../queries/Auth';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { TokenStorage } from '../storage/token.storage';
@@ -24,7 +24,6 @@ export class AuthService {
         this.apollo.query({
           query: AUTH_INIT
         }).subscribe((resp) => {
-          console.log(resp);
           if (resp) {
             observer.next(true);
             observer.complete();

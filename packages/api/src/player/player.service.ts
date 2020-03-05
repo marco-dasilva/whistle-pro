@@ -11,7 +11,15 @@ export class PlayerService {
   ) { }
 
   async player(id: number): Promise<PlayerEntity[]> {
-    return this.playerRepository.find({ where: { id } });
+    const p = new Array<PlayerEntity>();
+
+    (await this.playerRepository.find({ where: { id } })).forEach(player => {
+      player.picture = Buffer.from(player.picture).toString('base64');
+
+      p.push(player);
+    });
+
+    return p;
   }
 
   async players(): Promise<PlayerEntity[]> {
