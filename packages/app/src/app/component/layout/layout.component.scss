@@ -1,3 +1,8 @@
 .d-flex {
   height: 100vh;
 }
+
+app-sidebar-right {
+  border-left: 1px solid #e4e4e4;
+  overflow: auto;
+}
