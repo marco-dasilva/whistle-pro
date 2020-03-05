@@ -15,6 +15,8 @@ import { HeaderComponent } from './component/layout/header/header.component';
 import { FooterComponent } from './component/layout/footer/footer.component';
 import { SidebarComponent } from './component/layout/sidebar/sidebar.component';
 import { PlayerService } from './service/player.service';
+import { LayoutComponent } from './component/layout/layout.component';
+import { SidebarRightComponent } from './component/layout/sidebar-right/sidebar-right.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { PlayerService } from './service/player.service';
     IndexComponent,
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    LayoutComponent,
+    SidebarRightComponent
   ],
   imports: [
     BrowserModule,

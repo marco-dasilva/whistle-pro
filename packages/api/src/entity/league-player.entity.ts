@@ -16,6 +16,6 @@ export class LeaguePlayerEntity {
   @Column({ type: 'boolean', default: false })
   isMonthly: boolean;
 
-  @Column({ type: 'boolean', default: false })
-  isAdmin: boolean;
+  @Column({ type: 'enum', enum: ['member', 'manager', 'admin'], default: 'member' })
+  role: string;
 }

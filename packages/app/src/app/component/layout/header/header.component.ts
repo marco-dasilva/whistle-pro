@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerService } from 'src/app/service/player.service';
-import { PlayerEntity } from '../../../../../../api/src/player/player.entity';
 
 @Component({
   selector: 'app-header',
@@ -8,18 +6,9 @@ import { PlayerEntity } from '../../../../../../api/src/player/player.entity';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  player: PlayerEntity = {} as PlayerEntity;
-
-  constructor(
-    private playerService: PlayerService
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.playerService.getPlayer().subscribe((player: any) => {
-      if (player) {
-        this.player = player;
-      }
-    });
   }
 
 }
