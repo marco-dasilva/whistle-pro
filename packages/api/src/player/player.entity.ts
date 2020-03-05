@@ -9,7 +9,7 @@ export class PlayerEntity {
   id: number;
 
   @Column({ type: 'blob', nullable: true })
-  @Field()
+  @Field({ nullable: true })
   picture: string;
 
   @Column({ unique: true })
@@ -47,6 +47,10 @@ export class PlayerEntity {
   @Column({ type: 'float' })
   @Field()
   skillRank: number;
+
+  @Column({ default: 0 })
+  @Field()
+  tickets: number;
 
   @Column({ default: false })
   @Field()

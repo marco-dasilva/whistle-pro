@@ -14,7 +14,9 @@ export class PlayerService {
     const p = new Array<PlayerEntity>();
 
     (await this.playerRepository.find({ where: { id } })).forEach(player => {
-      player.picture = Buffer.from(player.picture).toString('base64');
+      if (player.picture) {
+        player.picture = Buffer.from(player.picture).toString('base64');
+      }
 
       p.push(player);
     });

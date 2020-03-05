@@ -7,6 +7,21 @@ type AuthEntity {
   token: String!
 }
 
+type LeagueEntity {
+  id: Float!
+  name: String!
+  type: String!
+  picture: String
+}
+
+type LeaguePlayerEntity {
+  id: Float!
+  league: LeagueEntity!
+  player: PlayerEntity!
+  isMonthly: Boolean!
+  role: String!
+}
+
 input LoginInput {
   email: String!
   password: String!
@@ -19,7 +34,7 @@ type Mutation {
 
 type PlayerEntity {
   id: ID!
-  picture: String!
+  picture: String
   uniqueName: String!
   firstName: String!
   lastName: String!
@@ -28,11 +43,14 @@ type PlayerEntity {
   dateOfBirth: String!
   nationality: String!
   skillRank: Float!
+  tickets: Float!
   isInjured: Boolean!
   isActive: Boolean!
 }
 
 type Query {
+  league: [LeaguePlayerEntity!]!
+  leagueById: LeaguePlayerEntity!
   playerById(id: Float!): [PlayerEntity!]!
   player: [PlayerEntity!]!
   players: [PlayerEntity!]!
