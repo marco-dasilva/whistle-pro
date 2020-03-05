@@ -1,0 +1,51 @@
+<div *ngIf="player" class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+                <div class="col-12">
+                    Username: {{ player.uniqueName }}
+                </div>
+                <div class="col-12">
+                    Name: {{ player.firstName }} {{ player.lastName }}
+                </div>
+                <div class="col-12">
+                    Email: {{ player.email }}
+                </div>
+                <div class="col-12">
+                    Phone Number: {{ player.phoneNumber }}
+                </div>
+                <div class="col-12">
+                    Date of birth: {{ player.dateOfBirth }}
+                </div>
+                <div class="col-12">
+                    Nationality: {{ player.nationality }}
+                </div>
+                <div class="col-12">
+                    Status: {{ player.isActive ? 'Active' : 'Inactive' }} 
+                </div>
+                <div class="col-12">
+                    Injured: {{ player.isInjured ? 'Yes' : 'No' }}
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="col-12">
+                    <div class="circle-item" [style.background-image]="getPlayerPicture()"></div>
+                </div>
+                <div class="col-12">
+                    Rank: {{ player.skillRank }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 
+
+
+
+skillRank
+isInjured
+isActive -->

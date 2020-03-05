@@ -1,3 +1,4 @@
+import { PlayerComponent } from './component/player/player.component';
 import { IndexComponent } from './component/index/index.component';
 import { LoginComponent } from './component/login/login.component';
 import { TeamComponent } from './component/team/team.component';
@@ -16,6 +17,11 @@ const routes: Routes = [
     path: 'teams',
     canActivate: [AuthGuard],
     component: TeamComponent
+  },
+  {
+    path: 'player',
+    canActivate: [AuthGuard],
+    component: PlayerComponent
   },
   {
     path: 'login',

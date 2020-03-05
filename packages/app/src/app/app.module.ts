@@ -17,6 +17,7 @@ import { SidebarComponent } from './component/layout/sidebar/sidebar.component';
 import { PlayerService } from './service/player.service';
 import { LayoutComponent } from './component/layout/layout.component';
 import { SidebarRightComponent } from './component/layout/sidebar-right/sidebar-right.component';
+import { PlayerComponent } from './component/player/player.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SidebarRightComponent } from './component/layout/sidebar-right/sidebar-
     FooterComponent,
     SidebarComponent,
     LayoutComponent,
-    SidebarRightComponent
+    SidebarRightComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
