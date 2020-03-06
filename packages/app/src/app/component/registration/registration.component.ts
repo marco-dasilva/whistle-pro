@@ -2,11 +2,11 @@ import { PlayerEntity } from './../../../../../api/src/player/player.entity';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-insert-player-temp',
-  templateUrl: './insert-player-temp.component.html',
-  styleUrls: ['./insert-player-temp.component.scss']
+  selector: 'app-registration',
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.scss']
 })
-export class InsertPlayerTempComponent implements OnInit {
+export class RegistrationComponent implements OnInit {
   player: PlayerEntity = {} as PlayerEntity;
   selectedFile: File;
 

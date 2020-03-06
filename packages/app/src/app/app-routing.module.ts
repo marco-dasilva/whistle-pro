@@ -1,4 +1,4 @@
-import { InsertPlayerTempComponent } from './component/insert-player-temp/insert-player-temp.component';
+import { RegistrationComponent } from './component/registration/registration.component';
 import { PlayerComponent } from './component/player/player.component';
 import { IndexComponent } from './component/index/index.component';
 import { LoginComponent } from './component/login/login.component';
@@ -27,7 +27,7 @@ const routes: Routes = [
   {
     path: 'insert-player',
     canActivate: [AuthGuard],
-    component: InsertPlayerTempComponent
+    component: RegistrationComponent
   },
   {
     path: 'login',
