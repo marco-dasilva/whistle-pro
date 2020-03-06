@@ -2,7 +2,14 @@
   height: 100vh;
 }
 
+app-sidebar, app-sidebar-right {
+  overflow: auto;
+}
+
+app-sidebar {
+  border-right: 1px solid #e4e4e4
+}
+
 app-sidebar-right {
   border-left: 1px solid #e4e4e4;
-  overflow: auto;
 }
