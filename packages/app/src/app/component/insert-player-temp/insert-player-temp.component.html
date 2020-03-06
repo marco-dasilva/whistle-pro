@@ -1,0 +1,24 @@
+<hr>
+<label for="uniqueName">uniqueName</label>
+<input id="uniqueName" [(ngModel)]="player.uniqueName" type="text">
+<hr>
+<label for="firstName">firstName</label>
+<input id="firstName" [(ngModel)]="player.firstName" type="text">
+<hr>
+<label for="lastName">lastName</label>
+<input id="lastName" [(ngModel)]="player.lastName" type="text">
+<hr>
+<label for="email">email</label>
+<input id="email" [(ngModel)]="player.email" type="text">
+<hr>
+<label for="phoneNumber">phoneNumber</label>
+<input id="phoneNumber" [(ngModel)]="player.phoneNumber" type="text">
+<hr>
+<label for="skillRank">skillRank</label>
+<input id="skillRank" [(ngModel)]="player.skillRank" type="text">
+<hr>
+<label for="image">image</label>
+<input type="file" (change)="onFileChanged($event)">
+<hr>
+<button (click)="submitForm()">Save</button>
+

@@ -18,6 +18,7 @@ import { PlayerService } from './service/player.service';
 import { LayoutComponent } from './component/layout/layout.component';
 import { SidebarRightComponent } from './component/layout/sidebar-right/sidebar-right.component';
 import { PlayerComponent } from './component/player/player.component';
+import { InsertPlayerTempComponent } from './component/insert-player-temp/insert-player-temp.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { PlayerComponent } from './component/player/player.component';
     SidebarComponent,
     LayoutComponent,
     SidebarRightComponent,
-    PlayerComponent
+    PlayerComponent,
+    InsertPlayerTempComponent
   ],
   imports: [
     BrowserModule,
