@@ -25,7 +25,7 @@ const routes: Routes = [
     component: PlayerComponent
   },
   {
-    path: 'insert-player',
+    path: 'register',
     canActivate: [AuthGuard],
     component: RegistrationComponent
   },

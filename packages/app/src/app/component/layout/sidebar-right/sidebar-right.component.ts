@@ -1,3 +1,5 @@
+import { ApplicationService } from './../../../service/application.service';
+import { Application } from './../../../interface/application.interface';
 import { LeaguePlayerEntity } from './../../../../../../api/src/entity/league-player.entity';
 
 import { Component, OnInit, Input } from '@angular/core';
@@ -12,9 +14,11 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 export class SidebarRightComponent implements OnInit {
   @Input() player: PlayerEntity;
   @Input() leagues: LeaguePlayerEntity[];
+  @Input() application: Application;
 
   constructor(
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private applicationService: ApplicationService
   ) { }
 
   ngOnInit(): void {
@@ -25,8 +29,10 @@ export class SidebarRightComponent implements OnInit {
   }
 
   getLeaguePicture(league: LeaguePlayerEntity): SafeUrl | void {
-    if (league) {
-      return this.sanitizer.bypassSecurityTrustStyle('url(data:image/png;base64,' + league.league.picture + ')');
-    }
+    return this.sanitizer.bypassSecurityTrustStyle('url(data:image/png;base64,' + league?.league?.picture + ')');
+  }
+
+  selectLeague(id: number): void {
+    this.applicationService.setLeagueSelected(id);
   }
 }

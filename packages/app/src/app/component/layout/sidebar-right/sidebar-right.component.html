@@ -1,12 +1,13 @@
 <div class="sb d-flex align-items-center flex-column py-4 px-3">
   <div class="circle-item d-flex align-items-center" [style.background-image]="getPlayerPicture()"
-    matTooltip="{{ player.uniqueName }}" [matTooltipPosition]="'left'">
+    matTooltip="{{ player.uniqueName }}" [matTooltipPosition]="'left'" routerLink="/player">
     <i class="fa fa-user mx-auto" *ngIf="!player?.picture"></i>
   </div>
   <hr class="w-100">
   <div class="circle-item d-flex align-items-center" *ngFor="let league of leagues; let i = index;"
-    [ngClass]="{'mt-4': i > 0}" [style.background-image]="getLeaguePicture(league)"
-    matTooltip="{{ league.league.name }}" [matTooltipPosition]="'left'">
+    [ngClass]="{'mt-4': (i > 0), 'active': application?.leagueSelected === league.league.id}"
+    [style.background-image]="getLeaguePicture(league)" matTooltip="{{ league.league.name }}"
+    [matTooltipPosition]="'left'" (click)="selectLeague(league.league.id)">
     <i class="fa fa-users mx-auto" *ngIf="!league?.league.picture;"></i>
   </div>
   <div class="circle-item d-flex align-items-center mt-4" matTooltip="Join League" [matTooltipPosition]="'left'">

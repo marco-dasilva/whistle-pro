@@ -1,3 +1,4 @@
+import { ApplicationService } from './service/application.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -51,7 +52,8 @@ import { RegistrationComponent } from './component/registration/registration.com
       useClass: HttpHeaderInterceptor,
       multi: true,
     },
-    PlayerService
+    PlayerService,
+    ApplicationService
   ],
   bootstrap: [AppComponent]
 })

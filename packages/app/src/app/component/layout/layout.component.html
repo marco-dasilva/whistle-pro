@@ -1,5 +1,5 @@
 <div class="d-flex align-items-stretch">
-  <app-sidebar></app-sidebar>
+  <app-sidebar [application]="application"></app-sidebar>
   <div class="flex-grow-1 overflow-auto">
     <app-header></app-header>
     <div class="px-3 py-4">
@@ -7,5 +7,5 @@
     </div>
     <app-footer></app-footer>
   </div>
-  <app-sidebar-right [player]="player" [leagues]="leagues"></app-sidebar-right>
+  <app-sidebar-right [player]="player" [leagues]="leagues" [application]="application"></app-sidebar-right>
 </div>

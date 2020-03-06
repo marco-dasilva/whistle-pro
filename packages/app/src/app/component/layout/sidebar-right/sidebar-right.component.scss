@@ -9,5 +9,9 @@
     background-size: cover;
     color: #666;
     cursor: pointer;
+
+    &.active {
+      box-shadow: 0px 0px 3px 2px var(--blue);
+    }
   }
 }
