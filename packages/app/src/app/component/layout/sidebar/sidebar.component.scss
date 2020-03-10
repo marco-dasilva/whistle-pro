@@ -1,3 +1,38 @@
 .sb {
   color: #fff;
+
+  h2 {
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+
+    .logo {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      margin-right: 15px;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  ul > li {
+    padding: 0 20px;
+
+    a {
+      color: var(--gray);
+
+      i {
+        margin-right: 15px;
+      }
+
+      &:hover {
+        color: var(--blue);
+        text-decoration: none;
+      }
+    }
+
+    &:not(:first-child) {
+      margin-top: 15px;
+    }
+  }
 }
