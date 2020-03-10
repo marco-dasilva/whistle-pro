@@ -1,10 +1,10 @@
 <div class="d-flex align-items-stretch">
   <app-sidebar [application]="application"></app-sidebar>
-  <div class="flex-grow-1 overflow-auto">
+  <div class="flex-grow-1 overflow-auto content">
     <app-header></app-header>
-    <div class="px-3 py-4">
+    <main class="px-3 py-4">
       <ng-content></ng-content>
-    </div>
+    </main>
     <app-footer></app-footer>
   </div>
   <app-sidebar-right [player]="player" [leagues]="leagues" [application]="application"></app-sidebar-right>

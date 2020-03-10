@@ -2,8 +2,9 @@
   height: 100vh;
 }
 
-app-sidebar, app-sidebar-right {
+app-sidebar, app-sidebar-right, .content {
   overflow: auto;
+  background-color: #fff;
 }
 
 app-sidebar {
