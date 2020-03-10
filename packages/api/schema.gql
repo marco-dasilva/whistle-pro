@@ -28,6 +28,7 @@ input LoginInput {
 }
 
 type Mutation {
+  createPlayer(input: PlayerInput!): PlayerEntity!
   createTeam(input: TeamInput!): TeamEntity!
   login(login: LoginInput!): AuthEntity!
 }
@@ -46,6 +47,16 @@ type PlayerEntity {
   tickets: Float!
   isInjured: Boolean!
   isActive: Boolean!
+}
+
+input PlayerInput {
+  uniqueName: String!
+  picture: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phoneNumber: String!
+  password: String!
 }
 
 type Query {

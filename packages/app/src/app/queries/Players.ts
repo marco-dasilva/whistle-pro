@@ -18,3 +18,27 @@ export const PLAYER = gql`
     }
   }
 `;
+
+export const CREATE_PLAYER = gql`
+  mutation (
+    $uniqueName:  String!
+    $picture: String!
+    $firstName: String!
+    $lastName:  String!
+    $email: String!
+    $phoneNumber: String!
+    $password:  String!) {
+    createPlayer (
+      input: {
+        uniqueName: $uniqueName
+        picture: $picture
+        firstName: $firstName
+        lastName: $lastName
+        email: $email
+        phoneNumber: $phoneNumber
+        password: $password
+        }) {
+          uniqueName
+        } 
+    }
+  `;
