@@ -2,13 +2,20 @@
   height: 100vh;
 }
 
-app-sidebar, app-sidebar-right, .content {
+ app-sidebar-right, .content {
   overflow: auto;
   background-color: #fff;
 }
 
+.content {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: 0px 0px 30px 0px #000000;
+}
+
 app-sidebar {
-  border-right: 1px solid #e4e4e4
+  // border-right: 1px solid #e4e4e4;
+  min-width: 300px;
 }
 
 app-sidebar-right {
