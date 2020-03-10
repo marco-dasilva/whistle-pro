@@ -40,9 +40,9 @@ type PlayerEntity {
   lastName: String!
   email: String!
   phoneNumber: String!
-  dateOfBirth: String!
-  nationality: String!
-  skillRank: Float!
+  dateOfBirth: String
+  nationality: String
+  skillRank: Float
   tickets: Float!
   isInjured: Boolean!
   isActive: Boolean!

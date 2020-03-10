@@ -37,15 +37,15 @@ export class PlayerEntity {
   phoneNumber: string;
 
   @Column({ type: 'date' })
-  @Field()
+  @Field({ nullable: true })
   dateOfBirth: string;
 
   @Column()
-  @Field()
+  @Field({ nullable: true })
   nationality: string;
 
-  @Column({ type: 'float' })
-  @Field()
+  @Column({ type: 'float', default: 0 })
+  @Field({ nullable: true })
   skillRank: number;
 
   @Column({ default: 0 })
