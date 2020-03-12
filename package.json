@@ -5,9 +5,8 @@
   "author": "mqr",
   "license": "MIT",
   "scripts": {
-    "dev:app": "yarn --cwd ./packages/app/ dev",
-    "dev:api": "yarn --cwd ./packages/api/ dev",
-    "dev:bot": "yarn --cwd ./packages/bot/ dev"
+    "dev:app": "yarn workspace app dev",
+    "dev:api": "yarn workspace api dev"
   },
   "workspaces": [
     "packages/*"
